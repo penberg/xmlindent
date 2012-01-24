@@ -1,3 +1,7 @@
+2012-01-24  Pekka Enberg <penberg@kernel.fi>
+
+	* Fix whitespace corruption in XML elements.
+
 2004-09-17  Pekka Enberg <penberg@iki.fi>
 
 	* Release 0.2.17.

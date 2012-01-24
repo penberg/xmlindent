@@ -217,11 +217,12 @@ static void force_newline_after_tag(struct buffer * buffer)
 {
     int current = input();
 
-    if (!is_newline(current)) {
-	do_newline(buffer, "\n");
-	eat_whitespace();
-    }
     do_unput(current);
+
+    if (!is_newline(current)) {
+        do_newline(buffer, "\n");
+        eat_whitespace();
+    }
 }
 
 static bool using_primary_buf(void)
