@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<_root>
+<node><children><child></child></children></node>
+<node><![CDATA[This is
+  not
+   a
+ test]]>
+<:node><node/>
+<!--
+  Hello,
+ World! -->
+</:node>
+	<empty attr1="xxx"
+	attr2="yyy"
+	/>
+<!-- This is a separate comment that contains a - 
+dash and ...
+> greater than sign -->
+</node>
+<node/>
+<p>we don't want to force newline here</p>
+<p>but in here, <b>do want</b> that</p>
+	<para>This line is clearly too long for 80-column terminal. Perhaps it should be wrapped?</para>
+</_root><!-- comment here -->
