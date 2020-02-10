@@ -101,8 +101,8 @@ COMMENT			"<!--"
 }
 
 . {
-	fprintf(stderr, "Error: Scanner did not recognize string '%s'. ", yytext);
-	abort();
+	fprintf(stderr, "Error: Scanner did not recognize string '%s' near line %d.\n", yytext, yylineno);
+	exit(1);
 }
 
 %%

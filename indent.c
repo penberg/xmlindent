@@ -437,6 +437,17 @@ static bool need_wrap(struct buffer * buffer)
 		+ buffer_size(buffer) + indent_size()) >= max_columns;
 }
 
+/*
+ * We detect EOF by getting a call to yywrap() when the only input file
+ * is completely read.
+ */
+static bool is_at_eof;
+
+int yywrap() {
+    is_at_eof = 1;
+    return 1; /* 1=nothing more to read */
+}
+
 static void content(void)
 {
     char current;
@@ -444,10 +455,10 @@ static void content(void)
     /*
      * We should get one character at a time.
      */
-    assert(strlen(yytext) == 1);
+    assert(yyleng == 1); /* strlen(yytext) fails at NUL or EOF */
 
     current = yytext[0];
-    if (current == EOF)
+    if (is_at_eof)
 	return;
     
     if (is_newline(current)) {

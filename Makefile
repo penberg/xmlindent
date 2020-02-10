@@ -8,7 +8,7 @@ CFLAGS=-Wall -g
 LDFLAGS=-Wl,-z,defs -Wl,-as-needed -Wl,--no-undefined
 
 xmlindent: buffer.o error.o indent.o main.o
-	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -lfl
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
 
 .c.o:
 	$(CC) $(CFLAGS) $^ -c -o $@
