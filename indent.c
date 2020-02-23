@@ -207,8 +207,11 @@ static void force_newline_before_tag(struct buffer * buffer)
     buffer_push_char(buffer, current);
 
     if (!is_newline(current)) {
-	do_newline(buffer, "\n");
-	eat_whitespace();
+        do_newline(buffer, "\n");
+        if (is_whitespace(current)) {
+            eat_whitespace();
+            return;
+        }
     }
 }
 
