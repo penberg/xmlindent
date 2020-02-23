@@ -4,10 +4,14 @@ PREFIX=/usr/local
 BIN_INSTALL_DIR=$(PREFIX)/bin
 MAN_INSTALL_DIR=$(PREFIX)/share/man/man1
 
-xmlindent: indent.c buffer.c main.c
-	gcc -Wall -g error.c indent.c buffer.c main.c -o xmlindent -lfl
+xmlindent: buffer.o error.o indent.o main.o
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -lfl
+
+.c.o:
+	$(CC) $(CFLAGS) $^ -c -o $@
 
 indent.c: lex.yy.c
+	touch indent.c
 
 lex.yy.c: xmlindent.yy
 	flex xmlindent.yy
