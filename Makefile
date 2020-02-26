@@ -1,8 +1,11 @@
 all: xmlindent
 
 PREFIX=/usr/local
+DESTDIR=
 BIN_INSTALL_DIR=$(PREFIX)/bin
 MAN_INSTALL_DIR=$(PREFIX)/share/man/man1
+CFLAGS=-Wall -g
+LDFLAGS=-Wl,-z,defs -Wl,-as-needed -Wl,--no-undefined
 
 xmlindent: buffer.o error.o indent.o main.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -lfl
@@ -17,16 +20,16 @@ lex.yy.c: xmlindent.yy
 	flex xmlindent.yy
 
 install: xmlindent
-	mkdir -p $(BIN_INSTALL_DIR)
-	mkdir -p $(MAN_INSTALL_DIR)
-	install -m555 xmlindent $(BIN_INSTALL_DIR)/xmlindent
-	install -m444 xmlindent.1 $(MAN_INSTALL_DIR)/xmlindent.1
+	mkdir -p $(DESTDIR)$(BIN_INSTALL_DIR)
+	mkdir -p $(DESTDIR)$(MAN_INSTALL_DIR)
+	install -m555 xmlindent $(DESTDIR)$(BIN_INSTALL_DIR)/xmlindent
+	install -m444 xmlindent.1 $(DESTDIR)$(MAN_INSTALL_DIR)/xmlindent.1
 
 uninstall:
-	rm -f $(BIN_INSTALL_DIR)/xmlindent
-	rm -f $(MAN_INSTALL_DIR)/xmlindent.1
+	rm -f $(DESTDIR)$(BIN_INSTALL_DIR)/xmlindent
+	rm -f $(DESTDIR)$(MAN_INSTALL_DIR)/xmlindent.1
 
 clean:
 	rm -f xmlindent *.o core lex.yy.c
 
-.PHONY: all clean
+.PHONY: all clean install uninstall
