@@ -19,7 +19,7 @@
 #define _VERSION_H 1
 
 #define PACKAGE "xmlindent"
-#define VERSION "0.2.17"
+#define VERSION "0.2.18"
 
 #endif
 

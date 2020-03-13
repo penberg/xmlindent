@@ -1,3 +1,20 @@
+2020-03-13  Pekka Enberg <penberg@iki.fi>
+
+	* Release 0.2.18.
+
+2020-02-26  Walter Doekes <walter+github@wjd.nu>
+
+	* build: Fix makefile to be (almost) debian compatible (#2)
+
+2020-02-23  Walter Doekes <walter+github@wjd.nu>
+
+	* build: Fix rebuild of indent.c after xmlindent.yy update (#1)
+	* parse: Fix whitespace consumption within text nodes (#3)
+
+2020-02-10  Walter Doekes <walter+github@wjd.nu>
+
+	* parse: Don't abort() on parse errors; cope with NULs; handle EOF (#4)
+
 2012-01-24  Pekka Enberg <penberg@kernel.fi>
 
 	* Fix whitespace corruption in XML elements.
